@@ -14,14 +14,47 @@ function App() {
 
 
     const [projects, setProjects] = useState(
-        [{
-            title: "Example 1",
-            description: "Example 1",
-            dueDate: "Example 1"
-        }]
+        [
+            {
+                title: "Example 1",
+                description: "Example 1",
+                dueDate: "Example 1",
+                tasks: [
+                    {
+                        description: "descr1/1"
+                    },
+                    {
+                        description: "descr1/2"
+                    }
+                ]
+            },
+            {
+                title: "Example 2",
+                description: "Example 2",
+                dueDate: "Example 2",
+                tasks: [
+                    {
+                        description: "descr2/1"
+                    },
+                    {
+                        description: "descr2/2"
+                    }
+                ]
+            }
+        ]
     )
+    console.log("projects:", projects)
 
-    function handleOnSave(newProject) {
+    function addNewTask(newTask) {
+        console.log("adding new task", newTask)
+        setProjects((prevState)=>{
+            return[...prevState,
+
+            ]
+        })
+    }
+
+    function saveNewProject(newProject) {
         setPageIdToDisplay("NoProjectSelected")
 
         setProjects((prevState) => {
@@ -41,14 +74,14 @@ function App() {
     let pageToDisplay = <Home/>
     if (pageIdToDisplay === "CreateProject") {
         pageToDisplay =
-            <CreateProject onSave={handleOnSave} onCancel={() => setPageIdToDisplay("Home")}></CreateProject>
+            <CreateProject onSave={saveNewProject} onCancel={() => setPageIdToDisplay("Home")}></CreateProject>
     } else if (pageIdToDisplay === "NoProjectSelected") {
         pageToDisplay =
             <NoProjectSelected onCreateNewProject={() => setPageIdToDisplay("CreateProject")}></NoProjectSelected>
-    } else if(pageIdToDisplay === "ShowProject"){
+    } else if (pageIdToDisplay === "ShowProject") {
         const projectToDisplay = projects.find((it) => it.title === lastProjectTitle)
 
-        pageToDisplay = <Project project={projectToDisplay}></Project>
+        pageToDisplay = <Project project={projectToDisplay} addTask={addNewTask}></Project>
     }
 
     return (
