@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+    font-family: "Segoe UI Historic"
+}
 /* The sidebar menu */
 .sidenav {
     height: 100%; /* Full-height: remove this if you want "auto" height */
@@ -10,29 +13,37 @@
     z-index: 1; /* Stay on top */
     top: 0; /* Stay at the top */
     left: 0;
-    background-color: #2C3639;
+    background-color: black;
     overflow-x: hidden; /* Disable horizontal scroll */
     padding-top: 20px;
-    color: #A27B5C;
+    color: #FF6C22;
 
 }
 
 
 /* The navigation menu links */
 .sidenav button {
-    padding: 6px 8px 6px 16px;
+    padding: 3px 4px 3px 4px;
     text-decoration: none;
-    font-size: 16pt;
-    color: #3F4E4F;
+    margin-bottom: 5px;
+    margin-left: 10px;
+    font-size: 10pt;
+    color: blue;
     display: block;
-    background-color: #DCD7C9;
+    background-color: ghostwhite;
     border-radius: 6px;
+    font-weight: bold;
+
 }
 
-/* When you mouse over the navigation links, change their color */
-.sidenav a:hover {
-    color: #f1f1f1;
+
+.sidenav h2 {
+    margin-bottom: 20px;
+    margin-left: 10px;
+    font-size: 20pt;
+
 }
+
 
 /* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {
@@ -46,44 +57,67 @@
 }
 
 .main {
-    margin-left: 160px; /* Same as the width of the sidenav */
-    font-size: 28px; /* Increased text to enable scrolling */
-    padding: 0px 10px;
-    background-color: #DCD7C9;
-    height:100vh;
-    color: #3F4E4F
+    margin-left: 200px; /* Same as the width of the sidenav */
+    font-size: 10pt; /* Increased text to enable scrolling */
+    margin-top: 14px;
+    background-color: ghostwhite;
+    height: 100vh;
+    color: black;
 }
 
-.saveCancel{
-    display: flex;
-justify-content: flex-end;
-    font-size: 16pt;
+.main h1 {
+    font-size: 20pt;
+}
+.main h2{
+    font-size: 14pt;
+    color: #FF6C22;
+}
+
+
+.main button {
+    color: ghostwhite;
+    background-color: #FF6C22;
+    border-radius: 4px;
+    padding: 1px 4px 1px 4px;
+    font-size: 12px;
+}
+
+.saveCancel {
+    /*display: flex;*/
+    /*justify-content: flex-end;*/
+    font-size: 14pt;
+    margin-right: 40px;
+    margin-top: 10px;
 
 }
 
-.saveButton{
+.saveButton {
     margin: 10px;
 }
 
-input{
+input {
     display: block;
     margin-bottom: 5px;
-    font-size: 12pt;
+    font-size: 10pt;
+    border: black solid 1px;
 }
 
-label{
-    font-size: 16pt;
+label {
+    font-size: 10pt;
 }
 
-#projectList{
-    color: white;
-}
 
-img{
+img {
     max-width: 10%;
     max-height: 10%;
 }
-/*.button{*/
-/*    color:white;*/
-/*    background: blue;*/
-/*}*/
+
+.projectList {
+    margin-top: 20px;
+}
+
+#clearButton{
+    margin-left: 20px;
+    font-size: 7pt;
+    background-color: blue;
+}

@@ -1,16 +1,12 @@
 import {useState} from "react";
 
-export default function Project({project, addTask}) {
-
-
+export default function Project({project, addTask, clearTask}) {
     const [descriptionOfNewTask, setDescriptionOfNewTask] = useState("")
-
-
-
 
     const taskList = project.tasks.map((task) => {
         return <li>
             {task.description}
+            <button id="clearButton" onClick={()=>{clearTask(task.description)}}>Clear</button>
         </li>
 
     })
@@ -18,19 +14,27 @@ export default function Project({project, addTask}) {
 
     return (
         <div className="main ">
-            <h1>{project.title}</h1>
+            <h2>{project.title}</h2>
             <p>{project.dueDate}</p>
             <p>{project.description}</p>
             <br/>
             <hr/>
             <br/>
             <h2>Tasks</h2>
-            <div>
-                <input type="text" value={descriptionOfNewTask} onChange={(event)=>{setDescriptionOfNewTask(event.target.value)}}></input>
-                <button onClick={() => addTask({
+            <br/>
+
+            <input type="text" value={descriptionOfNewTask} onChange={(event) => {
+                setDescriptionOfNewTask(event.target.value)
+            }}></input>
+            <button onClick={() => {
+                addTask({
                     description: descriptionOfNewTask
-                })}>Add Task</button>
-            </div>
+                })
+                setDescriptionOfNewTask("")
+            }}>Add Task
+            </button>
+            <br/>
+            <br/>
             <ul>
                 {taskList}
             </ul>

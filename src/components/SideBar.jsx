@@ -13,7 +13,9 @@ export default function SideBar({onAddProject, projects, showProject}) {
         <aside className="sidenav">
             <h2>YOUR PROJECTS</h2>
             <button onClick={onAddProject}>+Add project</button>
+            <div className="projectList">
             <ul>{projectList}</ul>
+            </div>
         </aside>
     )
 }

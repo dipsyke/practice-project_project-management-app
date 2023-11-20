@@ -47,10 +47,30 @@ function App() {
 
     function addNewTask(newTask) {
         console.log("adding new task", newTask)
-        setProjects((prevState)=>{
-            return[...prevState,
+        setProjects((prevState) => {
+            const newState = [...prevState]
+            const openedProject = newState.find((project) => project.title === lastProjectTitle)
+            if(!openedProject.tasks.includes(newTask)){
+                openedProject.tasks.push(newTask)
+            }
+            return newState
+        })
+    }
 
-            ]
+    function clearTaskValami(description) {
+        setProjects(prevState => {
+            const newState = [...prevState]
+            const openedProject = newState.find((project) => project.title === lastProjectTitle)
+
+            const taskToClear = openedProject.tasks.find((task) => task.description === description)
+            const index = openedProject.tasks.indexOf(taskToClear)
+            console.log('index in clearTaskValami', index)
+            if (index >= 0) {
+                const removedElement = openedProject.tasks.splice(index, 1)
+                console.log(`removed element: ${removedElement}`)
+            }
+
+            return newState
         })
     }
 
@@ -81,7 +101,7 @@ function App() {
     } else if (pageIdToDisplay === "ShowProject") {
         const projectToDisplay = projects.find((it) => it.title === lastProjectTitle)
 
-        pageToDisplay = <Project project={projectToDisplay} addTask={addNewTask}></Project>
+        pageToDisplay = <Project project={projectToDisplay} addTask={addNewTask} clearTask={clearTaskValami}></Project>
     }
 
     return (
